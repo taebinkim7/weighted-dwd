@@ -3,13 +3,12 @@ requires = ["flit_core >=2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "dwd"
+name = "wdwd"
 authors = [
-    {name = 'Iain Carmichael', email = 'idc9@cornell.edu'},
-    {name = 'David Allemang', email = 'david.allemang@kitware.com'},
+    {name = 'Taebin Kim', email = 'taebinkim@unc.edu'},
 ]
 maintainers = [
-    {name = 'Kitware Medical', email = 'david.allemang@kitware.com'}
+    {name = 'Taebin Kim', email = 'taebinkim@unc.edu'},
 ]
 dependencies = [
     "numpy",
@@ -46,4 +45,4 @@ doc = [
 ]
 
 [project.urls]
-Source = 'https://github.com/slicersalt/dwd'
+Source = 'https://github.com/taebinkim7/weighted-dwd'

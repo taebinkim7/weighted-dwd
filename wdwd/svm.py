@@ -3,7 +3,7 @@ import numpy as np
 
 from sklearn.base import BaseEstimator  # , TransformerMixin, ClassifierMixin
 
-from dwd.linear_model import LinearClassifierMixin
+from wdwd.linear_model import LinearClassifierMixin
 
 
 def solve_svm(X, y, C, sample_weight=None, solver_kws={}):

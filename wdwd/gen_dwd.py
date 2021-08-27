@@ -4,9 +4,9 @@ from copy import deepcopy
 from sklearn.base import BaseEstimator
 from sklearn.utils import check_X_y
 
-from dwd.utils import pm1
-from dwd.cv import run_cv
-from dwd.linear_model import LinearClassifierMixin
+from wdwd.utils import pm1
+from wdwd.cv import run_cv
+from wdwd.linear_model import LinearClassifierMixin
 
 
 class GenDWD(BaseEstimator, LinearClassifierMixin):

@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.base import BaseEstimator
 from sklearn.preprocessing import KernelCenterer
 
-from dwd.kernel_utils import KernelClfMixin, KernelScaler
+from wdwd.kernel_utils import KernelClfMixin, KernelScaler
 
 
 class KernMD(BaseEstimator, KernelClfMixin):

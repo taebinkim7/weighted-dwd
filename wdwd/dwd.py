@@ -5,8 +5,8 @@ from sklearn.base import BaseEstimator
 from sklearn.utils import check_X_y
 from sklearn.metrics.pairwise import euclidean_distances
 
-from dwd.utils import pm1
-from dwd.linear_model import LinearClassifierMixin
+from wdwd.utils import pm1
+from wdwd.linear_model import LinearClassifierMixin
 
 
 class DWD(BaseEstimator, LinearClassifierMixin):

@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 import numpy as np
 
-from dwd.dwd import DWD
-from dwd.gen_kern_dwd import KernGDWD
-from dwd.viz import ABLine2D, clf2D_slope_intercept, get_mesh_grid
+from wdwd.dwd import DWD
+from wdwd.gen_kern_dwd import KernGDWD
+from wdwd.viz import ABLine2D, clf2D_slope_intercept, get_mesh_grid
 
 cm = plt.cm.RdBu
 cm_bright = ListedColormap(['#FF0000', '#0000FF'])

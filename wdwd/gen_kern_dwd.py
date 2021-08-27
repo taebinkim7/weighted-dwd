@@ -4,10 +4,10 @@ from copy import deepcopy
 from sklearn.base import BaseEstimator
 from sklearn.utils import check_X_y
 
-from dwd.utils import pm1
-from dwd.gen_dwd import V, V_grad
-from dwd.kernel_utils import KernelClfMixin
-from dwd.cv import run_cv
+from wdwd.utils import pm1
+from wdwd.gen_dwd import V, V_grad
+from wdwd.kernel_utils import KernelClfMixin
+from wdwd.cv import run_cv
 
 
 class KernGDWD(BaseEstimator, KernelClfMixin):
