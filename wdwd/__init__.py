@@ -1,4 +1,4 @@
-"""Distance Weighted Discrimination for Python"""
+"""Weighted Distance Weighted Discrimination for Python"""
 
 __version__ = '1.0.2'
 

@@ -15,7 +15,7 @@ class WDWD(BaseEstimator, LinearClassifierMixin):
         self.C = C
         self.solver_kws = solver_kws
 
-    def fit(self, X, y, mode='dwd', pi=[1.0, 1.0], costs=[1.0, 1.0]):
+    def fit(self, X, y, pi=[1.0, 1.0], costs=[1.0, 1.0]):
         """Fit the model according to the given training data.
 
         Parameters
