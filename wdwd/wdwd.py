@@ -149,9 +149,8 @@ def solve_wdwd_socp(X, y, W, C=1.0, solver_kws={}):
 
     problem.solve(**solver_kws)
 
-    # d = rho - sigma
-    # rho = (1/d + d), sigma = (1/d - d)/2
-    d = rho.value - sigma.value
+    # d = W * (rho - sigma)
+    d = W.value * (rho.value - sigma.value)
 
     return beta.value, intercept.value, eta.value, d, problem
 
