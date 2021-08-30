@@ -130,7 +130,7 @@ def solve_wdwd_socp(X, y, W, C=1.0, solver_kws={}):
 
     # objective funtion
     e = np.ones(n_samples)
-    objective = e.T @ (rho + sigma + C * eta)
+    objective = e.T @ (rho + sigma + C * cp.multiply(W, eta))
 
     # setup constraints
     # TODO: do we need explicit SOCP constraints?
