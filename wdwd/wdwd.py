@@ -135,14 +135,9 @@ def solve_wdwd_socp(X, y, W, C=1.0, solver_kws={}):
     # setup constraints
     # TODO: do we need explicit SOCP constraints?
     Y_tilde = cp.diag(y)  # TODO: make sparse
-    # constraints = [cp.multiply(W, rho - sigma) == \
-    #                Y_tilde @ X @ beta + intercept * y + eta,
-    #                cp.SOC(cp.Parameter(value=1), beta)]  # ||beta||_2^2 <= 1
-
-    constraints = [cp.SOC(cp.Parameter(value=1), beta)]  # ||beta||_2^2 <= 1
-    constraints.extend([W[i] * (rho[i] - sigma[i]) == \
-                        y[i] * (X[i] @ beta + intercept) + eta[i]
-                        for i in range(n_samples)])
+    constraints = [cp.multiply(W, rho - sigma) == \
+                   Y_tilde @ X @ beta + intercept * y + eta,
+                   cp.SOC(cp.Parameter(value=1), beta)]  # ||beta||_2^2 <= 1
 
     # rho^2 - sigma^2 >= 1
     constraints.extend([cp.SOC(rho[i], cp.vstack([sigma[i], 1]))
