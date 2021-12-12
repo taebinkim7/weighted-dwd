@@ -15,7 +15,7 @@ class WDWD(BaseEstimator, LinearClassifierMixin):
         self.C = C
         self.solver_kws = solver_kws
 
-    def fit(self, X, y, pi=[1.0, 1.0], costs=[1.0, 1.0]):
+    def fit(self, X, y, pi=[1.0, 1.0], costs=[1.0, 1.0], sample_weight=None):
         """Fit the model according to the given training data.
 
         Parameters
@@ -32,6 +32,10 @@ class WDWD(BaseEstimator, LinearClassifierMixin):
 
         costs: array-like, (2, )
             Misclassification costs. [cost_fp, cost_fn]
+        
+        sample_weight : array-like, shape = [n_samples], optional
+            Array of weights that are assigned to individual
+            samples.
 
         Returns
         -------
@@ -51,11 +55,15 @@ class WDWD(BaseEstimator, LinearClassifierMixin):
         pi = np.array(pi)
         costs = np.array(costs)
 
-        weights = costs * pi / pi_s
-        W = np.ones(n_samples)
-        W[y_0] = weights[0]
-        W[y_1] = weights[1]
-
+        if sample_weight is None:
+            weights = costs * pi / pi_s
+            W = np.ones(n_samples)
+            W[y_0] = weights[0]
+            W[y_1] = weights[1]
+        else:
+            W = np.array(sample_weight).reshape(-1)
+            len(W) == n_samples
+            
         if self.C == 'auto':
             self.C = auto_dwd_C(X, y)
 
@@ -104,7 +112,7 @@ def solve_wdwd_socp(X, y, W, C=1.0, solver_kws={}):
 
     if C < 0:
         raise ValueError("Penalty term must be positive; got (C={})".format(C))
-
+        
     X, y = check_X_y(X, y,
                      accept_sparse='csr',
                      dtype='numeric')
@@ -128,7 +136,7 @@ def solve_wdwd_socp(X, y, W, C=1.0, solver_kws={}):
     rho = cp.Variable(shape=n_samples)
     sigma = cp.Variable(shape=n_samples)
 
-    # objective funtion
+    # objective funtion        
     e = np.ones(n_samples)
     objective = e.T @ (rho + sigma + C * cp.multiply(W, eta))
 
